@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ll.blog.dao.SysViewMapper">
+  <resultMap id="BaseResultMap" type="com.ll.blog.entity.SysView">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_view
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ll.blog.entity.SysView">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_view (ip, create_by)
+    values (#{ip,jdbcType=VARCHAR}, #{createBy,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ll.blog.entity.SysView">
+    update sys_view
+    set ip = #{ip,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, ip, create_by
+    from sys_view
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ip, create_by
+    from sys_view
+  </select>
+  <resultMap id="BaseResultMap" type="com.ll.blog.entity.SysView">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ll.blog.entity.SysView">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_view (ip, create_by)
+    values (#{ip,jdbcType=VARCHAR}, #{createBy,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ip, create_by
+    from sys_view
+  </select>
+</mapper>
