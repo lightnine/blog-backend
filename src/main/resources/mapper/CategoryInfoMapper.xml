@@ -9,20 +9,20 @@
     <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tbl_category_info
+    delete from category_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.ll.blog.entity.CategoryInfo">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tbl_category_info (`name`, `number`, create_by, 
+    insert into category_info (`name`, `number`, create_by, 
       modified_by)
     values (#{name,jdbcType=VARCHAR}, #{number,jdbcType=TINYINT}, #{createBy,jdbcType=TIMESTAMP}, 
       #{modifiedBy,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ll.blog.entity.CategoryInfo">
-    update tbl_category_info
+    update category_info
     set `name` = #{name,jdbcType=VARCHAR},
       `number` = #{number,jdbcType=TINYINT},
       create_by = #{createBy,jdbcType=TIMESTAMP},
@@ -31,31 +31,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, `name`, `number`, create_by, modified_by
-    from tbl_category_info
+    from category_info
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, `name`, `number`, create_by, modified_by
-    from tbl_category_info
-  </select>
-  <resultMap id="BaseResultMap" type="com.ll.blog.entity.CategoryInfo">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="number" jdbcType="TINYINT" property="number" />
-    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
-    <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
-  </resultMap>
-  <insert id="insert" parameterType="com.ll.blog.entity.CategoryInfo">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into tbl_category_info (`name`, `number`, create_by, 
-      modified_by)
-    values (#{name,jdbcType=VARCHAR}, #{number,jdbcType=TINYINT}, #{createBy,jdbcType=TIMESTAMP}, 
-      #{modifiedBy,jdbcType=TIMESTAMP})
-  </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, `name`, `number`, create_by, modified_by
-    from tbl_category_info
+    from category_info
   </select>
 </mapper>

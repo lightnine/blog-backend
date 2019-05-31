@@ -9,20 +9,20 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tbl_article_content
+    delete from article_content
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.ll.blog.entity.ArticleContent">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tbl_article_content (article_id, create_by, modifield_by, 
+    insert into article_content (article_id, create_by, modifield_by, 
       content)
     values (#{articleId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, #{modifieldBy,jdbcType=TIMESTAMP}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ll.blog.entity.ArticleContent">
-    update tbl_article_content
+    update article_content
     set article_id = #{articleId,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=TIMESTAMP},
       modifield_by = #{modifieldBy,jdbcType=TIMESTAMP},
@@ -31,31 +31,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, article_id, create_by, modifield_by, content
-    from tbl_article_content
+    from article_content
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, article_id, create_by, modifield_by, content
-    from tbl_article_content
-  </select>
-  <resultMap id="BaseResultMap" type="com.ll.blog.entity.ArticleContent">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="article_id" jdbcType="BIGINT" property="articleId" />
-    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
-    <result column="modifield_by" jdbcType="TIMESTAMP" property="modifieldBy" />
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
-  </resultMap>
-  <insert id="insert" parameterType="com.ll.blog.entity.ArticleContent">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into tbl_article_content (article_id, create_by, modifield_by, 
-      content)
-    values (#{articleId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, #{modifieldBy,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=LONGVARCHAR})
-  </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, article_id, create_by, modifield_by, content
-    from tbl_article_content
+    from article_content
   </select>
 </mapper>

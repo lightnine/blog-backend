@@ -9,20 +9,20 @@
     <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tbl_article_category
+    delete from article_category
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.ll.blog.entity.ArticleCategory">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tbl_article_category (category_id, article_id, create_by, 
+    insert into article_category (category_id, article_id, create_by, 
       modified_by)
     values (#{categoryId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, 
       #{modifiedBy,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ll.blog.entity.ArticleCategory">
-    update tbl_article_category
+    update article_category
     set category_id = #{categoryId,jdbcType=BIGINT},
       article_id = #{articleId,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=TIMESTAMP},
@@ -31,31 +31,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, category_id, article_id, create_by, modified_by
-    from tbl_article_category
+    from article_category
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, category_id, article_id, create_by, modified_by
-    from tbl_article_category
-  </select>
-  <resultMap id="BaseResultMap" type="com.ll.blog.entity.ArticleCategory">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
-    <result column="article_id" jdbcType="BIGINT" property="articleId" />
-    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
-    <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
-  </resultMap>
-  <insert id="insert" parameterType="com.ll.blog.entity.ArticleCategory">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into tbl_article_category (category_id, article_id, create_by, 
-      modified_by)
-    values (#{categoryId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, 
-      #{modifiedBy,jdbcType=TIMESTAMP})
-  </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, category_id, article_id, create_by, modified_by
-    from tbl_article_category
+    from article_category
   </select>
 </mapper>

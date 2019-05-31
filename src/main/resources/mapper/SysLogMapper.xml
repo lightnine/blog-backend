@@ -40,25 +40,4 @@
     select id, ip, create_by, remark, operate_url, operate_by
     from sys_log
   </select>
-  <resultMap id="BaseResultMap" type="com.ll.blog.entity.SysLog">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
-    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-    <result column="operate_url" jdbcType="VARCHAR" property="operateUrl" />
-    <result column="operate_by" jdbcType="VARCHAR" property="operateBy" />
-  </resultMap>
-  <insert id="insert" parameterType="com.ll.blog.entity.SysLog">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into sys_log (ip, create_by, remark, 
-      operate_url, operate_by)
-    values (#{ip,jdbcType=VARCHAR}, #{createBy,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
-      #{operateUrl,jdbcType=VARCHAR}, #{operateBy,jdbcType=VARCHAR})
-  </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, ip, create_by, remark, operate_url, operate_by
-    from sys_log
-  </select>
 </mapper>

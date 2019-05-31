@@ -9,20 +9,20 @@
     <result column="is_effective" jdbcType="BIT" property="isEffective" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tbl_article_comment
+    delete from article_comment
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.ll.blog.entity.ArticleComment">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tbl_article_comment (article_id, comment_id, create_by, 
+    insert into article_comment (article_id, comment_id, create_by, 
       is_effective)
     values (#{articleId,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, 
       #{isEffective,jdbcType=BIT})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ll.blog.entity.ArticleComment">
-    update tbl_article_comment
+    update article_comment
     set article_id = #{articleId,jdbcType=BIGINT},
       comment_id = #{commentId,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=TIMESTAMP},
@@ -31,31 +31,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, article_id, comment_id, create_by, is_effective
-    from tbl_article_comment
+    from article_comment
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, article_id, comment_id, create_by, is_effective
-    from tbl_article_comment
-  </select>
-  <resultMap id="BaseResultMap" type="com.ll.blog.entity.ArticleComment">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="article_id" jdbcType="BIGINT" property="articleId" />
-    <result column="comment_id" jdbcType="BIGINT" property="commentId" />
-    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
-    <result column="is_effective" jdbcType="BIT" property="isEffective" />
-  </resultMap>
-  <insert id="insert" parameterType="com.ll.blog.entity.ArticleComment">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into tbl_article_comment (article_id, comment_id, create_by, 
-      is_effective)
-    values (#{articleId,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, #{createBy,jdbcType=TIMESTAMP}, 
-      #{isEffective,jdbcType=BIT})
-  </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, article_id, comment_id, create_by, is_effective
-    from tbl_article_comment
+    from article_comment
   </select>
 </mapper>

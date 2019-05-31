@@ -28,7 +28,6 @@
         <!-- 格式化XML代码 -->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
-
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 
         <!-- 注释 -->
@@ -42,10 +41,6 @@
                         userId="root"
                         password="123456">
         </jdbcConnection>
-        <!-- jdbc连接 -->
-<!--        <jdbcConnection driverClass="${spring.datasource.driver-class-name}" connectionURL="${spring.datasource.url}"-->
-<!--                        userId="${spring.datasource.username}" password="${spring.datasource.password}" />-->
-        <!-- 类型转换 -->
         <javaTypeResolver>
             <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
             <property name="forceBigDecimals" value="false"/>
@@ -64,12 +59,7 @@
         <javaClientGenerator targetPackage="com.ll.blog.dao" targetProject="src/main/java" type="XMLMAPPER" >
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-<!--        <table tableName="test" enableCountByExample="true" enableUpdateByExample="true"-->
-<!--               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
-<!--            <property name="useActualColumnNames" value="false" />-->
-<!--            &lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-<!--        </table>-->
+
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
         <table tableName="sys_log" domainObjectName="SysLog" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
@@ -85,42 +75,42 @@
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_article_content" domainObjectName="ArticleContent" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="article_content" domainObjectName="ArticleContent" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_article_info" domainObjectName="ArticleInfo" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="article_info" domainObjectName="ArticleInfo" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_article_comment" domainObjectName="ArticleComment" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="article_comment" domainObjectName="ArticleComment" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_category_info" domainObjectName="CategoryInfo" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="category_info" domainObjectName="CategoryInfo" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="tbl_article_category" domainObjectName="ArticleCategory" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="article_category" domainObjectName="ArticleCategory" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
